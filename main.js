@@ -93,8 +93,8 @@ async function findingbins(){
 
 
 
-
 client.once('ready', () =>{
     console.log("BinBrain is online");
 })
+//enter your discord bot token here 
 client.login('F');
