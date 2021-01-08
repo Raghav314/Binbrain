@@ -1,3 +1,7 @@
+//to anyone reading,i have stoped working on this project.I am fairly new to coding so if any of this code is not upto par please fix it your self
+//i started this project because i wanted everyone to have access to a simple mod that ahem ahem someone locked behind a in-game pay wall
+//my plans for this project was to add a discord bot to output the arrys,if you want you can do it yourself.
+//i will not explain how to use this,if you know you know
 //dependencies for code to work.
 const Discord = require("discord.js");
 const fetch = require('node-fetch');
@@ -20,7 +24,7 @@ async function findingbins(){
     .then(res => res.json())
     .then(API =>{
         //looping through the function to check multiple pages of API
-        if(pagecount < 3){
+        if(pagecount < API.totalPages){
         auctions = API.auctions;
         //going through all the auctions and checking if they are a BIN if yes then storing it
         for(i=0 ;i<auctions.length; i++){
@@ -33,7 +37,7 @@ async function findingbins(){
         findingbins();
         }
         //if the function has been called equal to the ammount of totalpages then we move on to cal
-        else if(pagecount == 3){
+        else if(pagecount == API.totalPages){
             cal();
         }
     });
@@ -93,8 +97,4 @@ async function findingbins(){
 
 
 
-client.once('ready', () =>{
-    console.log("BinBrain is online");
-})
-//enter your discord bot token here 
-client.login('F');
+
