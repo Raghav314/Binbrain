@@ -62,7 +62,7 @@ async function findingbins(){
             tempPrice.sort(function(a, b){return a-b});
             if(tempPrice.length>1){
             output.push(tempName,tempPrice[1] - tempPrice[0],tempTier);
-            if(output[1]>= 1000000){
+            if(output[1]>= 1000000 && output[1]<= 2000000){
             console.log(output);
             }
             }
