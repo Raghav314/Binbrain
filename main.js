@@ -1,14 +1,11 @@
-//to anyone reading,i have stoped working on this project.I am fairly new to coding so if any of this code is not upto par please fix it your self
-//i started this project because i wanted everyone to have access to a simple mod that ahem ahem someone locked behind a in-game pay wall
-//my plans for this project was to add a discord bot to output the arrys,if you want you can do it yourself.
-//i will not explain how to use this,if you know you know
-//dependencies for code to work.
+
 const Discord = require("discord.js");
 const fetch = require('node-fetch');
 const client = new Discord.Client();
 
 //declaring variables
 let pagecount = 0;
+let tempProfitMargin;
 let auctions;
 let BinList = [];
 let tempPrice = [];
@@ -59,13 +56,15 @@ async function findingbins(){
             }
             preventDupe.push(BinList[i][0] + BinList[i][2]);
             }
+            tempProfitMargin = (tempPrice[1]/tempPrice[0] * 100) - 100;
             tempPrice.sort(function(a, b){return a-b});
             if(tempPrice.length>1){
-            output.push(tempName,tempPrice[1] - tempPrice[0],tempTier);
+            output.push(tempName,tempPrice[1] - tempPrice[0],tempTier,tempProfitMargin);
             if(output[1]>= 1000000 && output[1]<= 2000000){
             console.log(output);
             }
             }
+            tempProfitMargin = 0;
             tempName = '';
             tempTier = '';
             tempPrice = [];
