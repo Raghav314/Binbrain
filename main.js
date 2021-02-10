@@ -56,8 +56,9 @@ async function findingbins(){
             }
             preventDupe.push(BinList[i][0] + BinList[i][2]);
             }
-            tempProfitMargin = (tempPrice[1]/tempPrice[0] * 100) - 100;
             tempPrice.sort(function(a, b){return a-b});
+            tempProfitMargin = ((tempPrice[1]/tempPrice[0]) * 100) - 100;
+            tempProfitMargin = Math.round(tempProfitMargin);
             if(tempPrice.length>1){
             output.push(tempName,tempPrice[1] - tempPrice[0],tempTier,tempProfitMargin);
             if(output[1]>= 1000000 && output[1]<= 2000000){
